@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
-from projects.views import redirect_to_list_projects
 
 
 def redirect_to_list_projects(request):
