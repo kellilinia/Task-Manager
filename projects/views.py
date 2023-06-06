@@ -17,3 +17,11 @@ def list_projects(request):
 
 def redirect_to_list_projects(request):
     return redirect("list_projects")
+
+@login_required
+def project_details(request, id):
+  instance = Project.objects.get(id=id)
+  context = {
+    "project_instance": instance,
+  }
+  return render(request, "projects/detail.html", context)

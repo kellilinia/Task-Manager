@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>{{ project_instance.name }}</h1>
+            <p>{{ project_instance.description }}</p>
+            <h2>Tasks</h2>
+        </div>
+        {% if project_instance.tasks.all %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Assignee</th>
+                    <th>Start date</th>
+                    <th>Due date</th>
+                    <th>Is completed</th>
+                </tr>
+            </thead>
+            {% for task in project_instance.tasks.all %}
+            <tbody>
+                <tr>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.assignee }}</td>
+                    <td>{{ task.start_date }}</td>
+                    <td>{{ task.due_date }}</td>
+                    <td>{{ task.is_completed|yesno:"Yes,No" }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>This project has no tasks</p>
+        {% endif %}
+    </main>
+
+</body>
+
+</html>
